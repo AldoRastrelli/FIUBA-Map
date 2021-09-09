@@ -17,6 +17,7 @@ class Node {
     this.group = this.categoria;
     this.aprobada = false;
     this.nota = -2;
+    this.compressed = false
     this.title =
       this.title ||
       (this.creditos
@@ -30,6 +31,11 @@ class Node {
       this.categoria !== "Materias Obligatorias" &&
       this.categoria !== "CBC" &&
       this.categoria !== "Fin de Carrera (Obligatorio)";
+  }
+
+  cambiarCompresion(){
+    this.compressed = !this.compressed;
+    return this;
   }
 
   aprobar(nota) {
@@ -87,7 +93,7 @@ class Node {
     else if (this.isHabilitada(ctx)) grupoDefault = "Habilitadas";
     this.group = grupoDefault;
 
-    let labelDefault = breakWords(this.materia);
+    let labelDefault = this.compressed ? "  " : breakWords(this.materia);
     if (showLabels) {
       if (this.aprobada && this.nota > 0)
         labelDefault += "\n[" + this.nota + "]";

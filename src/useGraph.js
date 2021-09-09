@@ -249,6 +249,11 @@ const useGraph = (loginHook) => {
     actualizar();
   };
 
+  const cambiarCompresion = (id) => {
+    nodes.update(getNode(id).cambiarCompresion());
+    actualizar();
+  };
+
   const cursando = (id, cuatri) => {
     nodes.update(getNode(id).cursando(cuatri));
     actualizar();
@@ -552,6 +557,7 @@ const useGraph = (loginHook) => {
     getNode,
     aprobar,
     desaprobar,
+    cambiarCompresion,
     redraw,
     promedio,
     promedioConAplazos,

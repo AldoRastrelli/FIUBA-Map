@@ -46,6 +46,7 @@ const Body = (props) => {
     setNodes,
     setEdges,
     desaprobar,
+    cambiarCompresion,
     getNode,
     edges,
     loadingGraph,
@@ -86,18 +87,24 @@ const Body = (props) => {
         desaprobar(id);
       }
     },
+    // doubleClick: (e) => {
+    //   const id = e.nodes[0];
+    //   if (!logged) return;
+    //   if (id === "CBC") return;
+    //   const node = getNode(id);
+    //   if (!node) return;
+    //   setDisplayedNode(id);
+    //   if (!node.aprobada) {
+    //     aprobar(id, 4);
+    //   } else {
+    //     desaprobar(id);
+    //   }
+    // },
     doubleClick: (e) => {
       const id = e.nodes[0];
-      if (!logged) return;
-      if (id === "CBC") return;
       const node = getNode(id);
       if (!node) return;
-      setDisplayedNode(id);
-      if (!node.aprobada) {
-        aprobar(id, 4);
-      } else {
-        desaprobar(id);
-      }
+      cambiarCompresion(id)
     },
     hold: (e) => {
       const id = e.nodes[0];
